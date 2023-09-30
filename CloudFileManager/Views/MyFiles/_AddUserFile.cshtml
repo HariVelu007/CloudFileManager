@@ -1,0 +1,45 @@
+﻿
+<div class="modal fade" id="AddUserFileModal" tabindex="-1" role="dialog" aria-labelledby="AddUserFileModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Add User File</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="AddFile" method="post" enctype="multipart/form-data">
+                    <div class="mb-1">
+                        <div class="custom-file">
+                            <input type="file" class="form-control" name="iUpload" id="iUpload" />
+                        </div>
+                    </div>
+                    <div class="mb-1 input-group">
+                        <input type="email" class="form-control" id="iAddUser" placeholder="name@example.com">
+                        <a class="btn btn-success"><i class="bi bi-person-fill-add" onclick="handleVerifyUser()"></i></a>
+                    </div>
+                    <div class="card mt-3">
+                        <div class="card-header h-25">User Access</div>
+                        <div class="card-body">
+                            <ul id="tempUser" class="list-group list-group-flush">
+                                
+                            </ul>
+                        </div>
+                    </div>
+               
+
+                    @*  @foreach (var item in Model)
+                    {
+                    <div class="input-group pb-1">
+                    <label class="form-control">@item.UsermailID</label>
+                    <a class="btn btn-danger" asp-action="DeleteUserAccess" asp-route-id=@item.ID><i class="bi bi-trash"></i></a>
+                    </div>
+                    }*@
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

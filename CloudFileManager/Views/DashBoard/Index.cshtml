@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "DashBoard";
+}
+
+<div class="container-fluid">
+    <div class="row py-3">
+        <div class="col">         
+                @await Component.InvokeAsync("Card", new { mode = "Total Files" })            
+        </div>
+        <div class="col">
+            @await Component.InvokeAsync("Card", new { mode = "Pending Requests" })           
+        </div>
+        <div class="col">
+            @await Component.InvokeAsync("Card", new { mode = "File Requests" })          
+        </div>
+        <div class="col">
+            @await Component.InvokeAsync("Card", new { mode = "Shared Files" })           
+        </div>
+    </div>
+    <div class="row pb-3">
+        <div class="col">
+            <div class="card" style="height:69vh">
+                <div class="card-header">Approval for Pending</div>
+                <div class="card-body" >
+                    @await Component.InvokeAsync("DGrid",new {mode="Pending"})
+                </div>
+                <div class="card-footer text-end">
+                    <button class="btn btn-primary">Approve all</button>
+                    <button class="btn btn-danger">Decline all</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="height:69vh">
+                <div class="card-header">My Request</div>
+                <div class="card-body">
+                    @await Component.InvokeAsync("DGrid",new {mode="MyRequest"})
+                </div>
+                <div class="card-footer text-end">
+                    <button class="btn btn-primary">Ignore all</button>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>

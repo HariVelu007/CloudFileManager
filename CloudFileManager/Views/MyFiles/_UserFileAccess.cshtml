@@ -1,0 +1,17 @@
+﻿@model List<UserFileAccessView>
+
+<label for="exampleFormControlInput1" class="form-label">Email address</label>
+<div class="mb-3 input-group">
+    <input type="email" class="form-control" id="iUserMailAccess" placeholder="name@example.com">
+    <a class="btn btn-success" onclick="handleAddUserAccess"><i class="bi bi-person-fill-add"></i></a>
+</div>
+
+
+@foreach (var item in Model)
+{
+    <div class="input-group pb-1">
+        <label class="form-control">@item.UsermailID</label>
+        <a class="btn btn-danger" asp-action="DeleteUserAccess" asp-route-id=@item.ID><i class="bi bi-trash"></i></a>
+    </div>   
+}
+

@@ -1,0 +1,16 @@
+﻿@model CloudFileManager.ViewModel.CardView
+@{
+    <div class="@Model.Style">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-9">
+                    <div class="card-title text-white">@Model.Title</div>
+                    <div class="card-title text-white display-6"> @Model.Count </div>
+                </div>
+                <div class="col-3">
+                    <i class="bi bi-file-earmark-text-fill text-white display-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>    
+}

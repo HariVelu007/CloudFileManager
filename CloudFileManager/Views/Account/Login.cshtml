@@ -1,0 +1,51 @@
+﻿@model CloudFileManager.Models.Account.LoginView
+@{
+    ViewData["Title"] = "Login";
+}
+@{
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid ">
+            <a class="navbar-brand">Cloud File Manager</a>
+            <form asp-action="Login" method="post" class="d-flex">
+                <div class="me-2 p-1">
+                    <input class="form-control" asp-for="UserMail" placeholder="User mail">
+                    <span class="text-danger" asp-validation-for="UserMail"></span>
+                </div>
+                <div class="p-1">
+                    <input class="form-control" asp-for=Password placeholder="Password">
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                </div>          
+                <div class="p-1">
+                    <button class="btn btn-primary" type="submit">Login</button>
+                    <button type="button" class="btn btn-success" onclick="OpenRegistration('@Url.Action("Register")')">Sign Up</button>
+                </div>
+
+            </form>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-12 text-center">
+            <img src="~/img/Wallpeper.jpg" class="img-fluid" style="max-height:calc(100vh - 40px);" />
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="registermodal">
+        <form asp-action="Register" method="post" id="frmRegister">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Register user</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="RegisterUser('@Url.Action("Register")')">Register</button>
+                        <button type="reset" class="btn btn-success">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+}

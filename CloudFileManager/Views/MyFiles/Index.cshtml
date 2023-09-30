@@ -1,0 +1,82 @@
+﻿@model ListResponse<CFMServices.Model.UserFileView>
+@{
+    ViewData["Title"] = "MyFiles";
+}
+<div class="container-fluid">
+
+    <div class="card mt-5 mb-4">
+        <div class="card-header">
+            Add File
+        </div>
+        <div class="card-body">    
+            <button class="btn btn-primary" type="button" id="btnAddUserAccess" data-toggle="modal" data-bs-url='@Url.Action("OpenAddWindow", "MyFiles",null,Context.Request.Scheme)' 
+            data-target="#AddUserFileModal" onclick="handleAddUserFile()">
+                <i class="bi bi-plus-circle"></i>  Add File
+            </button>
+            <div id="AddUserFileContainer">
+
+            </div>
+        </div>     
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-light">
+                <thead>
+                    <tr class="bg-light text-dark">
+                        <th style="width:8%"></th>
+                        <th style="width:30%">File Name</th>
+                        <th style="width:10%">Size</th>
+                        <th style="width:10%">Extension</th>
+                        <th style="width:20%">Created By</th>
+                        <th style="width:20%">Created Date</th>
+                        <th style="width:5%;min-width:110px;text-align:right"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Model)
+                    {
+                        <tr>
+                            <td>
+                                <button class="btn btn-warning" onclick="handleEditUserAccess('@Url.Action("EditFile", "MyFiles",new {item.ID},Context.Request.Scheme)')">
+                                    <i class="bi bi-pencil-square"></i> </button>
+                                <a class="btn btn-success" asp-action="DownloadFile" asp-controller="MyFiles" asp-route-id="@item.ID"><i class="bi bi-download"></i> </a>                                
+                            </td>
+                            <td>@item.FileName</td>
+                            <td>@item.FileSize</td>
+                            <td>@item.FileExtension</td>
+                            <td>@item.UserMail</td>
+                            <td>@item.CreatedDate</td>
+                            <td style="text-align:right">
+                                <a class="btn btn-danger" asp-action="DeleteFile" asp-controller="MyFiles" asp-route-id="@item.ID"><i class="bi bi-trash"></i> </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+            <div class="modal fade" id="ModalUserAccess" tabindex="-1" role="dialog" aria-labelledby="ModalUserAccess" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">User Access</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.Raw(TempData["Status"] ?? "")
+            </div>
+        </div>
+    </div>
+</div>

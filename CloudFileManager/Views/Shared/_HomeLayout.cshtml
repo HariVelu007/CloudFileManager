@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CloudFileManager</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CloudFileManager.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="sidebar">
+        <a asp-action="Index" asp-controller="DashBoard"><h5>CLOUD MANAGER</h5></a>
+        <a class="@(ViewContext.RouteData.Values["Controller"].ToString() == "DashBoard" ? "active" : "")" asp-action="Index" asp-controller="DashBoard">Dashboard</a>
+        <a class="@(ViewContext.RouteData.Values["Controller"].ToString() == "MyFiles" ? "active" : "")" asp-action="Index" asp-controller="MyFiles">My Files</a>
+        <a class="@(ViewContext.RouteData.Values["Controller"].ToString() == "MyRequest" ? "active" : "")" asp-action="Index" asp-controller="MyRequest">My Request</a>
+        <a class="@(ViewContext.RouteData.Values["Controller"].ToString() == "SharedFile" ? "active" : "")" asp-action="Index" asp-controller="SharedFile">Shared Files</a>
+    </div>
+    <div class="container-fluid">
+
+        <main role="main" class="pb-3">
+            <nav class="navbar navbar-expand-sm  navbar-light bg-white border-bottom box-shadow">
+                <div class="container-fluid">
+
+
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-start">
+                        
+                    </div>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                        <ul class="navbar-nav flex-grow-1 justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-light" asp-area="" asp-controller="DashBoard" asp-action="Logout">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="text-center">
+            &copy; 2023 - CloudFileManager - <a asp-area="" asp-controller="DashBoard" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

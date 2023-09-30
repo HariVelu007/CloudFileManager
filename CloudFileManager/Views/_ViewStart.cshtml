@@ -1,0 +1,13 @@
+﻿@{  
+    string CurrentReq = Convert.ToString(Context.Request.HttpContext.Request.RouteValues["Controller"]);    
+  
+    switch (CurrentReq)
+    {
+        case "Account":
+            Layout = "~/Views/Shared/_AccountLayout.cshtml";
+            break;
+        default:            
+            Layout = "~/Views/Shared/_HomeLayout.cshtml";
+            break;
+    }  
+}  
