@@ -61,7 +61,7 @@ namespace CloudFileManager.Controllers
         {                     
             return PartialView("_AddUserFile");
         }
-        [HttpGet]
+        [HttpGet]  
         public async Task<bool> VerifyUser(string usermail)
         {
             bool res= await _userFileService.VerifyUser(usermail);

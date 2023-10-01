@@ -69,12 +69,14 @@ handleVerifyUser = () => {
     debugger;
     $.ajax({
         type: 'GET',
-        url: `/MyFile/VerifyUser/?usermail='${user}'`,
+        url: `/MyFiles/VerifyUser`,
+        data: { usermail: user },
         success: function (response) {
             if (response) {
                 $("#tempUser").append("<li class='list-group-item'>" + user + "</li>");
             }
-        }
+        }        
+
     })
 }
 //MyFileController end

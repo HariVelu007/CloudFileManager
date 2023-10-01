@@ -47,7 +47,7 @@ namespace CloudFileManager
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Account}/{action=Login}");
+                pattern: "{controller=Account}/{action=Login}/{id?}");
 
             app.Run();
         }
