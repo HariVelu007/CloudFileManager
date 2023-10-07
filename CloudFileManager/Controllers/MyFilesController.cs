@@ -49,7 +49,7 @@ namespace CloudFileManager.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeleteFile(int id)//test
+        public async Task<ActionResult> DeleteFile(int id)
         {
             var status= await _userFileService.DeleteUserFile(id);
             TempData["Status"] = status ? HTMLHelper.Alert("success", "File sucessfully deleted") : HTMLHelper.Alert("danger", "File delete failed");
